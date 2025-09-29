@@ -1,0 +1,121 @@
+/* style.css */
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    background: rgb(165, 220, 228);
+}
+
+.face {
+    position: relative;
+    width: 300px;
+    height: 300px;
+    background: darkgoldenrod;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.face:hover {
+    background: #ff4444;
+    transform: scale(1.1);
+    box-shadow: 0 0 30px rgba(255, 0, 0, 0.637);
+}
+
+.eyes {
+    position: relative;
+    top: -40px;
+    display: flex;
+}
+
+.eyes .eye {
+    position: relative;
+    width: 80px;
+    height: 80px;
+    background: white;
+    border-radius: 50%;
+    margin: 0 15px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.face:hover .eye {
+    background: #ffcccc;
+}
+
+.eyes .eye::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(
+        calc(-50% + var(--pupil-x, 0)),
+        calc(-50% + var(--pupil-y, 0))
+    );
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: black;
+    transition: all 0.3s ease;
+}
+
+.face:hover .eye::before {
+    background: #ff0000;
+    transform: translate(
+        calc(-50% + var(--pupil-x, 0)),
+        calc(-50% + var(--pupil-y, 0))
+    ) scale(1.2);
+}
+
+.mouth {
+    background:whitesmoke;
+    position: absolute;
+    bottom: 50px;
+    width: 150px;
+    height: 80px;
+    border-bottom-left-radius: 75px;
+    border-bottom-right-radius: 75px;
+    border: 6px solid black;
+    transition: all 0.3s ease;
+
+}
+
+.mouth::before {
+    content: "";
+    position: absolute;
+    left: 30%; /* adjust horizontal placement as needed */
+    width:3px;
+    height: 100%;
+    background: rgb(0, 0, 0);
+}
+
+.mouth::after {
+    content: "";
+    position: absolute;
+    right: 30%; /* second line horizontal placement */
+    width: 3px;
+    height: 100%;
+    background: rgb(0, 0, 0);
+}
+
+.face:hover .mouth::before,
+.face:hover .mouth::after {
+    content:none;
+}
+
+.face:hover .mouth {
+    background:none;
+    border-radius: 50%;
+    border: 6px solid #990000;
+    border-top-color: transparent;
+    height: 120px;
+    bottom: 20px;
+    transform: rotate(180deg);
+}
